@@ -4,11 +4,26 @@
 <suite parallel="false" name="NopCommerce - User">
 
 	<parameter name="url" value="https://demo.nopcommerce.com/" />
+	<test name="RUN on EDGE">
+		<parameter name="browser" value="edge" />
+		<classes>
+			<class name="com.copcommerce.user.Level_01_Page_Object_Patern" />
+		</classes>
+	</test>
+	
+	<test name="RUN on CHROME">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.copcommerce.user.Level_01_Page_Object_Patern" />
+		</classes>
+	</test>
+	
 	<test name="RUN on FIREFOX">
 		<parameter name="browser" value="firefox" />
 		<classes>
 			<class name="com.copcommerce.user.Level_01_Page_Object_Patern" />
 		</classes>
 	</test>
+	
 
 </suite> 

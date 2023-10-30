@@ -1,38 +1,30 @@
 package com.copcommerce.user;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import commons.BasePage;
+import commons.BaseTest;
 import pageObjects.HomePageObject;
 import pageObjects.RegisterPageObject;
 
-public class Level_01_Page_Object_Patern extends BasePage {
+public class Level_01_Page_Object_Patern extends BaseTest {
 
 	private WebDriver driver;
 	private String emailAddress;
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
-	String projectPath = System.getProperty("user.dir");
 
+	@Parameters({ "browser", "url" })
 	@BeforeClass
-	public void beforeClass() {
-		System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
-		driver = new FirefoxDriver();
-
+	public void beforeClass(String browserName, String url) {
+		driver = getBrowserDriver(browserName, url);
 		emailAddress = "afc" + generateFakeNumber() + "@gmail.vn";
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
-
-		openUrl(driver, "https://demo.nopcommerce.com/");
-
 		homePage = new HomePageObject(driver);
 	}
 
