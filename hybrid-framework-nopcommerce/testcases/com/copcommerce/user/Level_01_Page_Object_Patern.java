@@ -29,7 +29,7 @@ public class Level_01_Page_Object_Patern extends BaseTest {
 	}
 
 	@Test
-	public void TC_01_Register_Empty_Data() {
+	public void User_01_Register_Empty_Data() {
 		homePage.clickToRegisterLink();
 		registerPage = new RegisterPageObject(driver);
 
@@ -43,15 +43,15 @@ public class Level_01_Page_Object_Patern extends BaseTest {
 	}
 
 	@Test
-	public void TC_02_Invalid_Email() {
+	public void User_02_Invalid_Email() {
 		homePage.clickToRegisterLink();
 		registerPage = new RegisterPageObject(driver);
 
-		registerPage.sendkeyToFirstNameTextbox("FC");
-		registerPage.sendkeyToLastNameTextbox("Automation");
-		registerPage.sendkeyToEmailTextbox("123@456$%^");
-		registerPage.sendkeyToPasswordTextbox("123456");
-		registerPage.sendkeyToConfirmPasswordTextbox("123456");
+		registerPage.inputToFirstNameTextbox("FC");
+		registerPage.inputToLastNameTextbox("Automation");
+		registerPage.inputToEmailTextbox("123@456$%^");
+		registerPage.inputToPasswordTextbox("123456");
+		registerPage.inputToConfirmPasswordTextbox("123456");
 
 		registerPage.clickToRegisterButton();
 
@@ -59,15 +59,15 @@ public class Level_01_Page_Object_Patern extends BaseTest {
 	}
 
 	@Test
-	public void TC_03_Register_Success() {
+	public void User_03_Register_Success() {
 		homePage.clickToRegisterLink();
 		registerPage = new RegisterPageObject(driver);
 
-		registerPage.sendkeyToFirstNameTextbox("FC");
-		registerPage.sendkeyToLastNameTextbox("Automation");
-		registerPage.sendkeyToEmailTextbox(emailAddress);
-		registerPage.sendkeyToPasswordTextbox("123456");
-		registerPage.sendkeyToConfirmPasswordTextbox("123456");
+		registerPage.inputToFirstNameTextbox("FC");
+		registerPage.inputToLastNameTextbox("Automation");
+		registerPage.inputToEmailTextbox(emailAddress);
+		registerPage.inputToPasswordTextbox("123456");
+		registerPage.inputToConfirmPasswordTextbox("123456");
 
 		registerPage.clickToRegisterButton();
 
@@ -77,30 +77,30 @@ public class Level_01_Page_Object_Patern extends BaseTest {
 	}
 
 	@Test
-	public void TC_04_Register_Existing_Email() {
+	public void User_04_Register_Existing_Email() {
 		homePage.clickToRegisterLink();
 		registerPage = new RegisterPageObject(driver);
 
-		registerPage.sendkeyToFirstNameTextbox("FC");
-		registerPage.sendkeyToLastNameTextbox("Automation");
-		registerPage.sendkeyToEmailTextbox(emailAddress);
-		registerPage.sendkeyToPasswordTextbox("123456");
-		registerPage.sendkeyToConfirmPasswordTextbox("123456");
+		registerPage.inputToFirstNameTextbox("FC");
+		registerPage.inputToLastNameTextbox("Automation");
+		registerPage.inputToEmailTextbox(emailAddress);
+		registerPage.inputToPasswordTextbox("123456");
+		registerPage.inputToConfirmPasswordTextbox("123456");
 		registerPage.clickToRegisterButton();
 
 		Assert.assertEquals(registerPage.getExistedEmailErrorMessage(), "The specified email already exists");
 	}
 
 	@Test
-	public void TC_05_Register_Password_Less_Than_6_Chars() {
+	public void User_05_Register_Password_Less_Than_6_Chars() {
 		homePage.clickToRegisterLink();
 		registerPage = new RegisterPageObject(driver);
 
-		registerPage.sendkeyToFirstNameTextbox("FC");
-		registerPage.sendkeyToLastNameTextbox("Automation");
-		registerPage.sendkeyToEmailTextbox(emailAddress);
-		registerPage.sendkeyToPasswordTextbox("123");
-		registerPage.sendkeyToConfirmPasswordTextbox("123");
+		registerPage.inputToFirstNameTextbox("FC");
+		registerPage.inputToLastNameTextbox("Automation");
+		registerPage.inputToEmailTextbox(emailAddress);
+		registerPage.inputToPasswordTextbox("123");
+		registerPage.inputToConfirmPasswordTextbox("123");
 		registerPage.clickToRegisterButton();
 
 		Assert.assertEquals(registerPage.getPasswordErrorMessage(),
@@ -108,15 +108,15 @@ public class Level_01_Page_Object_Patern extends BaseTest {
 	}
 
 	@Test
-	public void TC_06_Register_Invalid_Confirm_Password() {
+	public void User_06_Register_Invalid_Confirm_Password() {
 		homePage.clickToRegisterLink();
 		registerPage = new RegisterPageObject(driver);
 
-		registerPage.sendkeyToFirstNameTextbox("FC");
-		registerPage.sendkeyToLastNameTextbox("Automation");
-		registerPage.sendkeyToEmailTextbox(emailAddress);
-		registerPage.sendkeyToPasswordTextbox("123456");
-		registerPage.sendkeyToConfirmPasswordTextbox("654312");
+		registerPage.inputToFirstNameTextbox("FC");
+		registerPage.inputToLastNameTextbox("Automation");
+		registerPage.inputToEmailTextbox(emailAddress);
+		registerPage.inputToPasswordTextbox("123456");
+		registerPage.inputToConfirmPasswordTextbox("654312");
 		registerPage.clickToRegisterButton();
 
 		Assert.assertEquals(registerPage.getConfirmPasswordErrorMessage(),

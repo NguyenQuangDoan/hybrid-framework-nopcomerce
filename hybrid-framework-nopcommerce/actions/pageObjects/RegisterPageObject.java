@@ -3,37 +3,38 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
+import pageUIs.HomePageUI;
 import pageUIs.RegisterPageUI;
 
-public class RegisterPageObject extends BasePage{
-	
+public class RegisterPageObject extends BasePage {
+
 	private WebDriver driver;
 
 	public RegisterPageObject(WebDriver _driver) {
 		driver = _driver;
 	}
 
-	public void sendkeyToFirstNameTextbox(String firstName) {
+	public void inputToFirstNameTextbox(String firstName) {
 		waitForElementVisible(driver, RegisterPageUI.FIRST_NAME_TEXTBOX);
 		sendkeyToElement(driver, RegisterPageUI.FIRST_NAME_TEXTBOX, firstName);
 	}
 
-	public void sendkeyToLastNameTextbox(String lastName) {
+	public void inputToLastNameTextbox(String lastName) {
 		waitForElementVisible(driver, RegisterPageUI.LAST_NAME_TEXTBOX);
 		sendkeyToElement(driver, RegisterPageUI.LAST_NAME_TEXTBOX, lastName);
 	}
 
-	public void sendkeyToEmailTextbox(String emailAddress) {
+	public void inputToEmailTextbox(String emailAddress) {
 		waitForElementVisible(driver, RegisterPageUI.EMAIL_TEXTBOX);
 		sendkeyToElement(driver, RegisterPageUI.EMAIL_TEXTBOX, emailAddress);
 	}
 
-	public void sendkeyToPasswordTextbox(String password) {
+	public void inputToPasswordTextbox(String password) {
 		waitForElementVisible(driver, RegisterPageUI.PASSWORD_TEXTBOX);
 		sendkeyToElement(driver, RegisterPageUI.PASSWORD_TEXTBOX, password);
 	}
 
-	public void sendkeyToConfirmPasswordTextbox(String confirmPassword) {
+	public void inputToConfirmPasswordTextbox(String confirmPassword) {
 		waitForElementVisible(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX);
 		sendkeyToElement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, confirmPassword);
 	}
@@ -81,6 +82,12 @@ public class RegisterPageObject extends BasePage{
 	public String getExistedEmailErrorMessage() {
 		waitForElementVisible(driver, RegisterPageUI.EXISTED_EMAIL_ERROR_MESSAGE);
 		return getElementText(driver, RegisterPageUI.EXISTED_EMAIL_ERROR_MESSAGE);
+	}
+
+	public LoginPageObject clickToLoginLink() {
+		waitForElementClickable(driver, HomePageUI.LOGIN_LINK);
+		clickToElement(driver, HomePageUI.LOGIN_LINK);
+		return PageGeneratorManager.getLoginPage(driver);
 	}
 
 }
