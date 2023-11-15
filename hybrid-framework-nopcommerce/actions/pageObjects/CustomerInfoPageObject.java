@@ -30,5 +30,9 @@ public class CustomerInfoPageObject extends BasePage{
 		return getElementAttribute(driver, CustomerInfoPageUI.EMAIL_ADDRESS_TEXTBOX, "value");
 	}
 
-	
+	public HomePageObject clickToSaveButton() {
+		waitForElementClickable(driver, CustomerInfoPageUI.SAVE_BUTTON);
+		clickToElement(driver, CustomerInfoPageUI.SAVE_BUTTON);
+		return PageGeneratorManager.getHomePage(driver);
+	}
 }

@@ -10,11 +10,14 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
+import pageObjects.AddressPageObject;
 import pageObjects.CustomerInfoPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LoginPageObject;
+import pageObjects.OrderPageObject;
 import pageObjects.PageGeneratorManager;
 import pageObjects.RegisterPageObject;
+import pageObjects.RewardPointPageObject;
 
 public class Level_02_Page_Generator_Manager extends BaseTest {
 
@@ -23,6 +26,9 @@ public class Level_02_Page_Generator_Manager extends BaseTest {
 	private RegisterPageObject registerPage;
 	private LoginPageObject loginPage;
 	private CustomerInfoPageObject customerInfoPage;
+	private OrderPageObject orderPage;
+	private RewardPointPageObject rewardPointPage;
+	private AddressPageObject addressPage;
 	private String firstName, lastName, emailAddress, password;
 
 	@Parameters({ "browser", "url" })
@@ -65,6 +71,21 @@ public class Level_02_Page_Generator_Manager extends BaseTest {
 		Assert.assertEquals(customerInfoPage.getFirstNameTextboxValue(), firstName);
 		Assert.assertEquals(customerInfoPage.getLastNameTextboxValue(), lastName);
 		Assert.assertEquals(customerInfoPage.getEnailAddressTextboxValue(), emailAddress);
+	}
+	
+	@Test
+	public void User_04_Navigate_Page() {
+		orderPage = customerInfoPage.openOrderPage(driver);
+		
+		rewardPointPage = orderPage.openRewardPointPage(driver);
+		
+		orderPage = rewardPointPage.openOrderPage(driver);
+		
+		customerInfoPage = orderPage.openCustomerInfoPage(driver);
+		 
+		addressPage = customerInfoPage.openAddressPage(driver);
+		
+		rewardPointPage = addressPage.openRewardPointPage(driver);
 	}
 
 	@AfterClass
